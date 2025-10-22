@@ -304,7 +304,11 @@ def generate_html(games, use_example_data=False):
                     </div>
                     <div class="info-row">
                         <span class="info-label">⚾ Équipes:</span>
-                        <span class="info-value">{game_info['away_team']} @ {game_info['home_team']}</span>
+                        <span class="info-value">
+                            <a href="team_{game['away_id']}_roster.html" style="color: #667eea; text-decoration: none; font-weight: bold;">{game_info['away_team']}</a>
+                            @
+                            <a href="team_{game['home_id']}_roster.html" style="color: #667eea; text-decoration: none; font-weight: bold;">{game_info['home_team']}</a>
+                        </span>
                     </div>
                     <div class="info-row">
                         <span class="info-label">📊 Statut:</span>

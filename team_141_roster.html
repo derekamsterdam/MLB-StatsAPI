@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toronto Blue Jays - Roster Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, #134A8E 0%, #E8291C 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .season-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            background: #134A8E;
+            border-radius: 25px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #E8291C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .section-header {
+            background: linear-gradient(90deg, #134A8E 0%, transparent 100%);
+            padding: 20px 30px;
+            margin: 40px 0 30px 0;
+            border-left: 5px solid #E8291C;
+        }
+
+        .section-header h2 {
+            font-size: 2.2em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .player-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #134A8E, #E8291C);
+        }
+
+        .player-card:hover {
+            transform: translateY(-8px);
+            border-color: #134A8E;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .player-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .player-image-container {
+            background: linear-gradient(180deg, #134A8E22 0%, transparent 100%);
+            height: 220px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .player-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 3em;
+            font-weight: 900;
+            color: rgba(255,255,255,0.15);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .player-image {
+            width: 160px;
+            height: 200px;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.3s ease;
+        }
+
+        .player-card:hover .player-image {
+            transform: scale(1.1);
+        }
+
+        .player-info {
+            padding: 20px;
+        }
+
+        .player-name {
+            font-size: 1.4em;
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .player-position {
+            display: inline-block;
+            background: #134A8E;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .player-bats-throws {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-bottom: 12px;
+        }
+
+        .stats-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.3em;
+            font-weight: 900;
+            color: #E8291C;
+            margin-top: 2px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #0a0a0a;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-banner">
+        <div class="header-content">
+            <img src="https://www.mlbstatic.com/team-logos/141.svg" alt="Toronto Blue Jays Logo" class="team-logo">
+            <h1>Toronto Blue Jays</h1>
+            <div class="season-badge">🏆 World Series 2025</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav-links">
+            <a href="world_series_schedule.html">← Retour au calendrier</a>
+        </div>
+
+        <div class="section-header">
+            <h2>⚾ Frappeurs</h2>
+        </div>
+
+        <div class="players-grid">
+
+            <div class="player-card">
+                <a href="player_665742.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#27</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/665742/headshot/67/current"
+                             alt="Vladimir Guerrero Jr."
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Vladimir Guerrero Jr.</div>
+                        <div class="player-position">1B</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 25</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">AVG</div>
+                                <div class="stat-value">.323</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">HR</div>
+                                <div class="stat-value">44</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RBI</div>
+                                <div class="stat-value">126</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_665489.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#11</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/665489/headshot/67/current"
+                             alt="Bo Bichette"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Bo Bichette</div>
+                        <div class="player-position">SS</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 26</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">AVG</div>
+                                <div class="stat-value">.298</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">HR</div>
+                                <div class="stat-value">22</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RBI</div>
+                                <div class="stat-value">89</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_596115.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#4</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/596115/headshot/67/current"
+                             alt="George Springer"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">George Springer</div>
+                        <div class="player-position">CF</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 35</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">AVG</div>
+                                <div class="stat-value">.275</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">HR</div>
+                                <div class="stat-value">28</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RBI</div>
+                                <div class="stat-value">82</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_677594.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#30</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/677594/headshot/67/current"
+                             alt="Alejandro Kirk"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Alejandro Kirk</div>
+                        <div class="player-position">C</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 25</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">AVG</div>
+                                <div class="stat-value">.265</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">HR</div>
+                                <div class="stat-value">15</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RBI</div>
+                                <div class="stat-value">68</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_666182.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#26</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/666182/headshot/67/current"
+                             alt="Matt Chapman"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Matt Chapman</div>
+                        <div class="player-position">3B</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 31</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">AVG</div>
+                                <div class="stat-value">.258</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">HR</div>
+                                <div class="stat-value">27</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RBI</div>
+                                <div class="stat-value">88</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_606466.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#25</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/606466/headshot/67/current"
+                             alt="Daulton Varsho"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Daulton Varsho</div>
+                        <div class="player-position">LF</div>
+                        <div class="player-bats-throws">B/T: L/R • Âge: 28</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">AVG</div>
+                                <div class="stat-value">.245</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">HR</div>
+                                <div class="stat-value">19</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">RBI</div>
+                                <div class="stat-value">65</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="section-header">
+            <h2>🔥 Lanceurs</h2>
+        </div>
+
+        <div class="players-grid">
+
+            <div class="player-card">
+                <a href="player_592789.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#17</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/592789/headshot/67/current"
+                             alt="José Berríos"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">José Berríos</div>
+                        <div class="player-position">SP</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 30</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">ERA</div>
+                                <div class="stat-value">3.65</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">W-L</div>
+                                <div class="stat-value">16-7</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">K</div>
+                                <div class="stat-value">192</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_666201.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#34</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/666201/headshot/67/current"
+                             alt="Kevin Gausman"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Kevin Gausman</div>
+                        <div class="player-position">SP</div>
+                        <div class="player-bats-throws">B/T: L/R • Âge: 33</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">ERA</div>
+                                <div class="stat-value">3.82</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">W-L</div>
+                                <div class="stat-value">14-9</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">K</div>
+                                <div class="stat-value">205</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_641154.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#40</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/641154/headshot/67/current"
+                             alt="Chris Bassitt"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Chris Bassitt</div>
+                        <div class="player-position">SP</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 35</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">ERA</div>
+                                <div class="stat-value">4.15</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">W-L</div>
+                                <div class="stat-value">12-11</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">K</div>
+                                <div class="stat-value">168</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_621121.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#68</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/621121/headshot/67/current"
+                             alt="Jordan Romano"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Jordan Romano</div>
+                        <div class="player-position">RP</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 31</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">ERA</div>
+                                <div class="stat-value">2.95</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">W-L</div>
+                                <div class="stat-value">4-3</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">K</div>
+                                <div class="stat-value">89</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="player-card">
+                <a href="player_656302.html">
+                    <div class="player-image-container">
+                        <div class="player-number">#41</div>
+                        <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/656302/headshot/67/current"
+                             alt="Jordan Hicks"
+                             class="player-image"
+                             onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160/v1/people/0/headshot/67/current'">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Jordan Hicks</div>
+                        <div class="player-position">RP</div>
+                        <div class="player-bats-throws">B/T: R/R • Âge: 28</div>
+                        <div class="stats-preview">
+                            <div class="stat">
+                                <div class="stat-label">ERA</div>
+                                <div class="stat-value">3.29</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">W-L</div>
+                                <div class="stat-value">6-5</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">K</div>
+                                <div class="stat-value">95</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Roster complet • Toronto Blue Jays</p>
+        <p style="margin-top: 10px; color: #666;">Mis à jour: 22/10/2025</p>
+    </div>
+</body>
+</html>

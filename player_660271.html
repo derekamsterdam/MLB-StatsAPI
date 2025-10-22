@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mookie Betts - Los Angeles Dodgers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #005A9C 0%, #EF3E42 100%);
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background: url('data:image/svg+xml,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="80" fill="white"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .player-photo-section {
+            text-align: center;
+        }
+
+        .player-photo-main {
+            width: 350px;
+            height: 450px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 5px solid rgba(255,255,255,0.2);
+        }
+
+        .player-number-giant {
+            font-size: 15em;
+            font-weight: 900;
+            opacity: 0.15;
+            position: absolute;
+            top: -50px;
+            right: 100px;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        .player-header-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-logo-small {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .player-name-large {
+            font-size: 4.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            line-height: 1;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .player-position-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .player-meta {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.8em;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .nav-links {
+            margin-bottom: 40px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            background: #005A9C;
+            border-radius: 25px;
+            margin-right: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #EF3E42;
+            transform: translateY(-2px);
+        }
+
+        .stats-section {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 2px solid #005A9C;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: #EF3E42;
+            border-bottom: 3px solid #005A9C;
+            padding-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-box {
+            background: rgba(0,0,0,0.3);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            border-color: #005A9C;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .stat-box-label {
+            font-size: 0.9em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .stat-box-value {
+            font-size: 3em;
+            font-weight: 900;
+            color: #EF3E42;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .stat-box-description {
+            font-size: 0.85em;
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .bio-section {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .bio-item {
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            border-left: 4px solid #005A9C;
+        }
+
+        .bio-label {
+            font-size: 0.9em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bio-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #fff;
+        }
+
+        .achievements {
+            background: linear-gradient(145deg, #005A9C22 0%, #EF3E4222 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: #005A9C;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            margin: 10px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .player-name-large {
+                font-size: 3em;
+            }
+
+            .player-meta {
+                justify-content: center;
+            }
+
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="hero-background"></div>
+        <div class="player-number-giant">#50</div>
+        <div class="hero-content">
+            <div class="player-photo-section">
+                <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_300/v1/people/660271/headshot/67/current"
+                     alt="Mookie Betts"
+                     class="player-photo-main"
+                     onerror="this.src='https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_350/v1/people/0/headshot/67/current'">
+            </div>
+            <div class="player-header-info">
+                <img src="https://www.mlbstatic.com/team-logos/119.svg" alt="Los Angeles Dodgers" class="team-logo-small">
+                <h1 class="player-name-large">Mookie Betts</h1>
+                <div class="player-position-badge">#50 • RF</div>
+                <div class="player-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Frappe</span>
+                        <span class="meta-value">R</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Lance</span>
+                        <span class="meta-value">R</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Âge</span>
+                        <span class="meta-value">31</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav-links">
+            <a href="team_119_roster.html">← Retour au roster</a>
+            <a href="world_series_schedule.html">Calendrier</a>
+        </div>
+
+        <div class="stats-section">
+            <h2 class="section-title">📊 Statistiques de la saison 2025</h2>
+            <div class="stats-grid">
+
+                <div class="stat-box">
+                    <div class="stat-box-label">Moyenne au Bâton</div>
+                    <div class="stat-box-value">.318</div>
+                    <div class="stat-box-description">Batting Average</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Coups de Circuit</div>
+                    <div class="stat-box-value">38</div>
+                    <div class="stat-box-description">Home Runs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Points Produits</div>
+                    <div class="stat-box-value">107</div>
+                    <div class="stat-box-description">Runs Batted In</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Points</div>
+                    <div class="stat-box-value">122</div>
+                    <div class="stat-box-description">Runs Scored</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Coups Sûrs</div>
+                    <div class="stat-box-value">188</div>
+                    <div class="stat-box-description">Hits</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Buts Volés</div>
+                    <div class="stat-box-value">24</div>
+                    <div class="stat-box-description">Stolen Bases</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">OPS</div>
+                    <div class="stat-box-value">.978</div>
+                    <div class="stat-box-description">On-base + Slugging</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">ℹ️ Informations du Joueur</h2>
+            <div class="bio-grid">
+                <div class="bio-item">
+                    <div class="bio-label">Équipe</div>
+                    <div class="bio-value">Los Angeles Dodgers</div>
+                </div>
+                <div class="bio-item">
+                    <div class="bio-label">Position</div>
+                    <div class="bio-value">RF</div>
+                </div>
+                <div class="bio-item">
+                    <div class="bio-label">Numéro</div>
+                    <div class="bio-value">#50</div>
+                </div>
+                <div class="bio-item">
+                    <div class="bio-label">Frappe / Lance</div>
+                    <div class="bio-value">R / R</div>
+                </div>
+                <div class="bio-item">
+                    <div class="bio-label">Âge</div>
+                    <div class="bio-value">31 ans</div>
+                </div>
+                <div class="bio-item">
+                    <div class="bio-label">Saison</div>
+                    <div class="bio-value">2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievements">
+            <h2 class="section-title">🏆 Compétition</h2>
+            <div style="text-align: center;">
+                <span class="achievement-badge">🏆 Série Mondiale 2025</span>
+                <span class="achievement-badge">⭐ All-Star</span>
+                <span class="achievement-badge">💪 Joueur Clé</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Mookie Betts</strong> • Los Angeles Dodgers</p>
+        <p style="margin-top: 10px; color: #666;">Mis à jour: 22/10/2025 à 18:53</p>
+    </div>
+</body>
+</html>
