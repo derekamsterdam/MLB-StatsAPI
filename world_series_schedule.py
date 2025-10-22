@@ -362,7 +362,7 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-    print(f"✓ Page générée: {output_file}")
+    print(f"[OK] Page générée: {output_file}")
     print(f"Ouvrez le fichier dans votre navigateur pour voir le calendrier.")
 
     if games:

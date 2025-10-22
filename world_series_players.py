@@ -522,9 +522,9 @@ def generate_all_player_pages():
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(html)
 
-        print(f"✓ {len(all_players)} profils créés pour {team_name}")
+        print(f"[OK] {len(all_players)} profils créés pour {team_name}")
 
 if __name__ == "__main__":
     print("Génération de tous les profils de joueurs...")
     generate_all_player_pages()
-    print("\n✓ Tous les profils de joueurs ont été générés avec succès!")
+    print("\n[OK] Tous les profils de joueurs ont été générés avec succès!")

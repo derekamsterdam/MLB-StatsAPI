@@ -675,6 +675,6 @@ if __name__ == "__main__":
             filename = f"team_{team_id}_roster.html"
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(html)
-            print(f"✓ Créé: {filename}")
+            print(f"[OK] Créé: {filename}")
 
     print("\nPages roster générées avec succès!")

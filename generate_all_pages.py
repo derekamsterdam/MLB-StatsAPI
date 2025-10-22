@@ -23,7 +23,7 @@ def main():
     ]
 
     for script, description in scripts:
-        print(f"📄 {description}...")
+        print(f"[PAGE] {description}...")
         print(f"   Exécution de {script}...")
         try:
             result = subprocess.run(
@@ -36,20 +36,20 @@ def main():
             if result.stderr:
                 print("Avertissements:", result.stderr)
         except subprocess.CalledProcessError as e:
-            print(f"❌ Erreur lors de l'exécution de {script}")
+            print(f"[ERREUR] Erreur lors de l'exécution de {script}")
             print(e.stderr)
             return False
         print()
 
     print("=" * 60)
-    print("✅ GÉNÉRATION TERMINÉE AVEC SUCCÈS!")
+    print("[OK] GÉNÉRATION TERMINÉE AVEC SUCCÈS!")
     print("=" * 60)
     print()
     print("Pages générées:")
-    print("  📅 world_series_schedule.html - Page d'accueil avec le calendrier")
-    print("  ⚾ team_141_roster.html - Roster des Blue Jays")
-    print("  ⚾ team_119_roster.html - Roster des Dodgers")
-    print("  👤 player_*.html - Profils individuels de tous les joueurs")
+    print("  [CALENDRIER] world_series_schedule.html - Page d'accueil avec le calendrier")
+    print("  [EQUIPE] team_141_roster.html - Roster des Blue Jays")
+    print("  [EQUIPE] team_119_roster.html - Roster des Dodgers")
+    print("  [JOUEUR] player_*.html - Profils individuels de tous les joueurs")
     print()
     print("Pour voir les pages, ouvrez 'world_series_schedule.html' dans votre navigateur!")
     print()
