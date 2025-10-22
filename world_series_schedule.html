@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Série Mondiale - Blue Jays vs Dodgers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .teams {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+        }
+
+        .team {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .team-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2a5298;
+            margin-top: 10px;
+        }
+
+        .vs {
+            font-size: 2em;
+            font-weight: bold;
+            color: #764ba2;
+            margin: 0 30px;
+        }
+
+        .games-list {
+            padding: 30px;
+        }
+
+        .game-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .game-info {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2a5298;
+            min-width: 100px;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        .no-games {
+            text-align: center;
+            padding: 60px 30px;
+            color: #666;
+        }
+
+        .no-games h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #764ba2;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Série Mondiale</h1>
+            <p>Matchs à venir</p>
+        </div>
+
+        <div class="teams">
+            <div class="team">
+                <div class="team-name">Toronto Blue Jays</div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="team">
+                <div class="team-name">Los Angeles Dodgers</div>
+            </div>
+        </div>
+
+        <div class="games-list">
+
+        <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 10px; padding: 20px; margin-bottom: 20px; text-align: center;">
+            <strong>Note:</strong> Ceci est une démonstration avec des données d'exemple.
+            Aucun match réel n'a été trouvé dans l'API MLB.
+        </div>
+
+
+            <div class="game-card">
+                <h3 style="color: #764ba2; margin-bottom: 15px;">Match 1</h3>
+                <div class="game-info">
+                    <div class="info-row">
+                        <span class="info-label">📅 Date:</span>
+                        <span class="info-value">Saturday, October 25, 2025</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🕐 Heure:</span>
+                        <span class="info-value">08:00 PM UTC</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📍 Endroit:</span>
+                        <span class="info-value">Dodger Stadium, Los Angeles, CA</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⚾ Équipes:</span>
+                        <span class="info-value">Toronto Blue Jays @ Los Angeles Dodgers</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📊 Statut:</span>
+                        <span class="info-value">Prévu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <h3 style="color: #764ba2; margin-bottom: 15px;">Match 2</h3>
+                <div class="game-info">
+                    <div class="info-row">
+                        <span class="info-label">📅 Date:</span>
+                        <span class="info-value">Monday, October 27, 2025</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🕐 Heure:</span>
+                        <span class="info-value">08:00 PM UTC</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📍 Endroit:</span>
+                        <span class="info-value">Dodger Stadium, Los Angeles, CA</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⚾ Équipes:</span>
+                        <span class="info-value">Toronto Blue Jays @ Los Angeles Dodgers</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📊 Statut:</span>
+                        <span class="info-value">Prévu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <h3 style="color: #764ba2; margin-bottom: 15px;">Match 3</h3>
+                <div class="game-info">
+                    <div class="info-row">
+                        <span class="info-label">📅 Date:</span>
+                        <span class="info-value">Wednesday, October 29, 2025</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🕐 Heure:</span>
+                        <span class="info-value">08:00 PM UTC</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📍 Endroit:</span>
+                        <span class="info-value">Rogers Centre, Toronto, ON</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⚾ Équipes:</span>
+                        <span class="info-value">Los Angeles Dodgers @ Toronto Blue Jays</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📊 Statut:</span>
+                        <span class="info-value">Prévu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <h3 style="color: #764ba2; margin-bottom: 15px;">Match 4</h3>
+                <div class="game-info">
+                    <div class="info-row">
+                        <span class="info-label">📅 Date:</span>
+                        <span class="info-value">Friday, October 31, 2025</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🕐 Heure:</span>
+                        <span class="info-value">08:00 PM UTC</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📍 Endroit:</span>
+                        <span class="info-value">Rogers Centre, Toronto, ON</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⚾ Équipes:</span>
+                        <span class="info-value">Los Angeles Dodgers @ Toronto Blue Jays</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📊 Statut:</span>
+                        <span class="info-value">Prévu</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>Données fournies par MLB Stats API</p>
+            <p>Dernière mise à jour: 22/10/2025 à 18:39</p>
+        </div>
+    </div>
+</body>
+</html>
